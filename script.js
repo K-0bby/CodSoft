@@ -26,7 +26,7 @@ buttons.forEach(button => {
             if (currentValue) {
                 previousValue = currentValue;
                 currentValue = '';
-                operator = 'value';
+                operator = value;
             }
         } else if (value === '='){
             if (currentValue && previousValue && operator) {
@@ -34,6 +34,8 @@ buttons.forEach(button => {
                 const previousNumber = parseFloat(previousValue);
                 let result = 0;
 
+                console.log(`Calculating: ${previousNumber} ${operator} ${currentNumber}`);
+                
                 switch (operator) {
                     case '+':
                         result = previousNumber + currentNumber;
@@ -42,12 +44,13 @@ buttons.forEach(button => {
                         result = previousNumber - currentNumber;
                         break;
                     case 'X': 
-                        result = previousNumber * currentNumber;
+                    result = previousNumber * currentNumber;
                         break;
-                    case '÷':
+                        case '÷':
                         result = previousNumber / currentNumber;
                         break;
                 }
+                console.log(result)
 
                 screen.textContent = result;
                 currentValue = String(result);
